@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:13.6
+    ports: 
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=
+    networks:
+      - expressjs_network
+  redis:
+    container_name: redis
+    image: redis:6.2.6
+    ports: 
+      - 6379:6379
+    networks:
+      - expressjs_network
+  expressjs-docker:
+    container_name: expressjs-docker
+    image: rafifirmansyah/expressjs-docker:latest
+    ports: 
+      - 3000:3000
+    depends_on:
+      - postgres
+      - redis
+    environment: 
+      - APP_URL=
+      - APP_PORT=
+      - REDIS_HOST=
+      - REDIS_PORT=
+      - POSTGRES_HOST=
+      - POSTGRES_PORT=
+      - POSTGRES_USER=
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=
+    networks:
+      - expressjs_network
+
+networks:
+  expressjs_network:
+    name: expressjs_network
