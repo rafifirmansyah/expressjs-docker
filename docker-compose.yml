@@ -5,6 +5,7 @@ services:
     container_name: postgres
     image: postgres:13.6
     ports: 
+      # local-port:docker-container-port  
       - 5433:5432
     environment:
       - POSTGRES_USER=
@@ -16,6 +17,7 @@ services:
     container_name: redis
     image: redis:6.2.6
     ports: 
+      # local-port:docker-container-port
       - 6379:6379
     networks:
       - expressjs_network
@@ -23,6 +25,7 @@ services:
     container_name: expressjs-docker
     image: rafifirmansyah/expressjs-docker:latest
     ports: 
+      # local-port:docker-container-port
       - 3000:3000
     depends_on:
       - postgres
@@ -30,9 +33,9 @@ services:
     environment: 
       - APP_URL=
       - APP_PORT=
-      - REDIS_HOST=
+      - REDIS_HOST=redis
       - REDIS_PORT=
-      - POSTGRES_HOST=
+      - POSTGRES_HOST=postgres
       - POSTGRES_PORT=
       - POSTGRES_USER=
       - POSTGRES_PASSWORD=
