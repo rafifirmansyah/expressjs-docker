@@ -9,6 +9,7 @@ Simple Development and Deployment Express JS with Docker.
 - [x] Resource Optimization. 
 
 ## Requirements
+* Node JS
 * Docker Desktop
 
 ## Getting Started
