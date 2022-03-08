@@ -17,7 +17,7 @@ Simple Development and Deployment Express JS with Docker.
 2. Clone this repo.
 3. Change directory to cloned repo.
 4. Fill in all the credentials you want to be global environments in docker-compose.yml.
-5. Install Depencency :
+5. Install Dependency :
     ```bash
     docker-compose up -d 
     ```
